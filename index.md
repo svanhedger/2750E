@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+<img src="https://www.knighthunter.com/Logos/78663/huroncatwestern.png?x=1&align=center&stretch=nostretch&url=companyurl" width="100"/>
 
-You can use the [editor on GitHub](https://github.com/svanhedger/2750E/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# 2750E Cognitive Assessment Repository
+Are you a student of Psychology 2750E? Are you looking to run one of the assessments for your independent research project? If so, then you've come to the right place! If you've just stumbled upon this repository by accident, that is fine as well! Feel free to explore the work being done by students of 2750E as they learn to program broswer-based experiments using jsPsych.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## The Assessments
 
-### Markdown
+### Stroop Task
+Description and link coming soon
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Flanker Task
+Description and link coming soon
 
-```markdown
-Syntax highlighted code block
+### Approximate Number Estimation Task
+Description and link coming soon
 
-# Header 1
-## Header 2
-### Header 3
+### Reading the Mind in the Eyes Test
+Description and link coming soon
 
-- Bulleted
-- List
+### Speech-in-Noise Task
+Description and link coming soon
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/svanhedger/2750E/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
