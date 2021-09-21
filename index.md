@@ -20,5 +20,15 @@ Description and link coming soon
 ### Speech-in-Noise Task
 Description and link coming soon
 
+------------------------------------
+
+### Matrix Reasoning Task
+Description and link coming soon
+
+### Backward Digit Span
+Description and link coming soon
+
+### Forward Digit Span
+Description and link coming soon
 
 
