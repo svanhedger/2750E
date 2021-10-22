@@ -23,7 +23,8 @@ Description and link coming soon
 ------------------------------------
 
 ### Matrix Reasoning Task
-Description and link coming soon
+The matrix reasoning task is designed as a measure of fluid intelligence. In this task, you will see a matrix of visual patterns. The lower-right part of the pattern will be missing. Your job is to select the best option that completes the pattern. There are 42 total patterns, and you will have 60 minutes to complete it.
+[BEGIN!](https://run.pavlovia.org/2750e/matrix-reasoning)
 
 ### Backward Digit Span
 Description and link coming soon
