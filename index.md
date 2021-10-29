@@ -36,7 +36,7 @@ The Attention Network Test (ANT) is a popular assessment of three subtypes of at
 
 ### Simon Memory Game
 The Simon Task is based on the popular memory game in which individuals must remember a sequence of tones/colored buttons, which light up in a specific order. It is meant as a measure of short-term memory and attention. You will play 20 "games" of Simon in this script. Expected duration: 60 minutes.<br><br>
-[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/simon/Dossier.pdf)</br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/simon/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/simon)
 
 
