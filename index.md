@@ -23,14 +23,20 @@ Description and link coming soon
 ------------------------------------
 
 ### Matrix Reasoning Task
-The matrix reasoning task is designed as a measure of fluid intelligence. In this task, you will see a matrix of visual patterns. The lower-right part of the pattern will be missing. Your job is to select the best option that completes the pattern. There are 42 total patterns, and you will have 60 minutes to complete it.
+The matrix reasoning task is designed as a measure of fluid intelligence. In this task, you will see a matrix of visual patterns. The lower-right part of the pattern will be missing. Your job is to select the best option that completes the pattern. There are 42 total patterns, and you will have 60 minutes to complete it.</br></br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/matrix-reasoning)
 
 ### Go/No-Go Task
-This is a classic paradigm for measuring cognitive control. On each trial, you will see one of two letters. One letter signals that you must respond as quickly as possible. The other letter signals that you must refrain from responding. 100 total trials. Expected duration: 5 minutes.
+This is a classic paradigm for measuring cognitive control. On each trial, you will see one of two letters. One letter signals that you must respond as quickly as possible. The other letter signals that you must refrain from responding. 100 total trials. Expected duration: 5 minutes.</br></br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/go-nogo)
 
 ### Attention Network Test
-The Attention Network Test (ANT) is a popular assessment of three subtypes of attention: alerting, orienting, and executive. It essentially combines a Flanker paradigm with a Posner cueing paradigm. This specific script has been adapted from the Experiment Factory (expfactory.github.io). Expected duration: 15 minutes.
+The Attention Network Test (ANT) is a popular assessment of three subtypes of attention: alerting, orienting, and executive. It essentially combines a Flanker paradigm with a Posner cueing paradigm. This specific script has been adapted from the Experiment Factory (expfactory.github.io). Expected duration: 15 minutes.</br></br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/ANT)
+
+### Simon Memory Game
+The Simon Task is based on the popular memory game in which individuals must remember a sequence of tones/colored buttons, which light up in a specific order. It is meant as a measure of short-term memory and attention. You will play 20 "games" of Simon in this script. Expected duration: 60 minutes.</br></br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/simon/Dossier.pdf)</br>
+[[BEGIN!]](https://run.pavlovia.org/2750e/simon)
+
 
