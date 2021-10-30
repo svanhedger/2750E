@@ -31,7 +31,8 @@ This is a classic paradigm for measuring cognitive control. On each trial, you w
 [[BEGIN!]](https://run.pavlovia.org/2750e/go-nogo)
 
 ### Attention Network Test
-The Attention Network Test (ANT) is a popular assessment of three subtypes of attention: alerting, orienting, and executive. It essentially combines a Flanker paradigm with a Posner cueing paradigm. This specific script has been adapted from the Experiment Factory (expfactory.github.io). Expected duration: 15 minutes.<br><br>
+The Attention Network Test (ANT) is a popular assessment of three subtypes of attention: alerting, orienting, and executive. It essentially combines a Flanker paradigm with a Posner cueing task. This specific script has been adapted from the Experiment Factory (expfactory.github.io). Expected duration: 15 minutes.<br><br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/ANT/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/ANT)
 
 ### Simon Memory Game
