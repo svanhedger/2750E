@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Matrix Reasoning</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="jspsych-6.0.2/jspsych.js"></script>
+  <script type="text/javascript" src="lib/jspsych-pavlovia-3.0.0.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-ravens-matrix.js"></script>
+  <script src="jspsych-6.0.2/plugins/jspsych-html-button-response.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="matrices.js"></script>
+
+  <link href="jspsych-6.0.2/css/jspsych.css" rel="stylesheet" type="text/css">
+  <link href="jspsych-6.0.2/css/matrix.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+  <script>
+    /**************/
+    /** TIMELINE **/
+    /**************/
+
+    var timeline = []; //specify the jsPsych timeline to which all trials/blocks are pushed
+
+    /************/
+    /** SET-UP **/
+    /************/
+
+    //participant id
+    var participantID = jsPsych.randomization.randomID(10); //this generates a random identifier
+    var expt = 'matrix-reasoning'; //name of the experiment
+    jsPsych.data.addProperties({
+      participant: participantID,
+      experiment: expt
+    });
+
+    //preload images
+    var matrix_preload = return_matrices_folder(); //img preload folder, from matrices.js
+
+    /**********/
+    /** MAIN **/
+    /**********/
+    //initialize connection with pavlovia
+    var pavlovia_init = {
+      type: "pavlovia",
+      command: "init"
+    };
+
+
+
+    //close connection
+    var pavlovia_finish = {
+      type: "pavlovia",
+      command: "finish"
+    };
+
+
+
+
+
+    //Final screen
+    var save_data = {
+      type: 'html-keyboard-response',
+      stimulus: '<p>This concludes the task. Press SPACEBAR to save your data.</p>',
+      choices: [' ']
+    };
+
+
+
+    timeline.push(pavlovia_init); //initializes the connection with Pavlovia server
+    timeline.push(matrices); //from matrices.js
+    timeline.push(pavlovia_finish); //close the connection with the Pavlovia server
+    timeline.push(save_data); //user option to save data
+
+
+
+    //initialize the experiment
+    jsPsych.init({
+          timeline: timeline,
+          preload_images: matrix_preload,
+          on_finish: function() {
+            var csvname = expt + '_' + participantID + '.csv';
+            jsPsych.data.get().localSave('csv', csvname);
+          }
+          });
+  </script>
+</body>
+
+</html>
