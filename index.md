@@ -24,6 +24,7 @@ Description and link coming soon
 
 ### Matrix Reasoning Task
 The matrix reasoning task is designed as a measure of fluid intelligence. In this task, you will see a matrix of visual patterns. The lower-right part of the pattern will be missing. Your job is to select the best option that completes the pattern. There are 42 total patterns, and you will have 60 minutes to complete it.<br><br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/matrix-reasoning/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/matrix-reasoning)
 
 ### Go/No-Go Task
