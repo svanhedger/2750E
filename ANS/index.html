@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Guess How Many Dots!</title>
+
+  <script src="jspsych-6.3.1/jquery-3.3.1.min.js"></script>
+  <script src="jspsych-6.3.1/jspsych.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-survey-text.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-slider-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-animation.js"></script>
+  <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+  <script>
+
+
+    var timeline = [];
+
+/*
+These variables will be used later in the code,
+they will be used to get new
+primers and stimuli for new trials
+*/
+var i = 0
+
+var u = 0
+
+// Here are the libraries of pictures used, categorized by their use. This will let the program load everything first and run better.
+
+var threetwoonestimuli = ["img/three.png", "img/two.png", "img/one.png"]
+
+var circle_picture_library = ["img/10-somebigsomesmall.png", "img/10-allsmall.png", "img/10-allbig.png", "img/15-somebigsomesmall.png", "img/15-allsmall.png", "img/15-allbig.png","img/20-somebigsomesmall.png", "img/20-allsmall.png", "img/20-allbig.png", "img/25-somebigsomesmall.png", "img/25-allsmall.png", "img/25-allbig.png", "img/30-somebigsomesmall.png", "img/30-allsmall.png", "img/30-allbig.png", "img/40-somebigsomesmall.png", "img/40-allsmall.png", "img/40-allbig.png"];
+
+var primers = ["img/traffic-1.jpg", "img/traffic-2.jpg", "img/traffic-3.jpg", "img/traffic-4.jpg", "img/singleobject-1.jpg", "img/singleobject-2.jpg", "img/singleobject-3.jpg", "img/singleobject-4.jpg"];
+
+/*
+This will randomly choose a picture of circles, we know how many cirlces they were
+shown since the amount is in name of the picture, e.g. 5-somebigsomesmall.png is a picture
+of 5 cirlces. There are also 3 kinds of pictures, "some big, some small", "all small",
+and "all big". Again, we know which one they were shown since the pictures are properly named.
+You can find this in the data file under the column B, "stimulus"
+*/
+var random_circle_picture_library = jsPsych.randomization.repeat(circle_picture_library, 1);
+
+/*
+This will randomly choose a primer to show the participant, we know which primer
+they were shown since the titles of the images properly identify them,
+e.g. pictures titled "traffic" belong to the traffic condition
+and "single object" pictures belong to the single object condition.
+Again, you can find this information in the data file under column B, "stimulus"
+*/
+
+var random_primers = jsPsych.randomization.repeat(primers, 4);
+
+/* Below are the actual trials, like the instructions and stimulus presentations
+that are executing thanks to the code above, sorting it out this way just lets
+it load up all the pictures properly and leads to less random issues.
+There are instructions throughout to help you edit it to fit your needs.
+*/
+
+var welcome_screen = {
+  type: 'html-keyboard-response',
+  stimulus: "Welcome! <p> Press any key to begin.", // The <p> is just telling the program to start a new paragraph (p for paragraph)
+  choices: jsPsych.AL,
+};
+timeline.push(welcome_screen);
+
+
+var introduction1 = {
+  type: 'html-keyboard-response',
+  stimulus: "This is an experiment where you will be shown a bunch of circles. <p> You will be asked to guess how many circles you saw. <p> They'll go pretty quick, so don't worry about being a bit off.<p> Press any key to continue",
+  choices: jsPsych.AL,
+};
+timeline.push(introduction1);
+
+var instructions = {
+  type: 'html-keyboard-response',
+  stimulus: "Before you see the circles, you'll see an unrelated picture.<p> You can just ignore that, you don't need to report anything about it.<p> Again, it'll go pretty fast, so you might not even notice it.<p>But keep an eye out for the second picture of circles!<p>The experiment will begin after a three second countdown.<p>Press any key to begin the experiment.",
+  choices: jsPsych.AL
+}
+timeline.push(instructions);
+
+// This is a three second countdown to indicate when the experiment starts, as it does go pretty fast.
+var threetwoone = {
+  type: 'animation',
+  stimuli: threetwoonestimuli,
+  frame_time: 1000,
+  render_on_canvas: false
+}
+
+var show_primer = {
+  type: 'image-keyboard-response',
+  stimulus: function(){
+    return random_primers[i];
+  },
+  trial_duration: 500, // This is how long the primer is shown in milliseconds, right now it's set at half of a second.
+  choices: jsPsych.NO_KEYS,
+  render_on_canvas: true,
+  on_finish: function(){
+    i += 1;
+  },
+};
+
+
+var show_circles = {
+  type: 'image-keyboard-response',
+  stimulus: function(){
+    return random_circle_picture_library[u];
+  },
+  trial_duration: 1000, // This is how long the picture of circles is shown in milliseconds, right now it's set at one second, this may be a bit too fast.
+  choices: jsPsych.NO_KEYS,
+  render_on_canvas: true,
+  on_finish: function (){
+    u += 1;
+    console.log(u);
+  }
+};
+
+
+// This is the response trial, it shows a slider that allows participants to choose the amount of circles they think they saw
+var how_many_circles = {
+  type: 'html-slider-response',
+  stimulus: 'How many circles did you see?', // This is the text that shows up under the slider, just change it to whatever estimation you want them to make.
+  labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], // If you want to add more choices, like say you're using a range of 15-65 circles, you will need to add each one manually (e.g. '31', '32', ... '65').  Here is the properly formatted 16-100: (, '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100', '101')
+  min: 1,
+  max: 50, // If you added choices above, you will need to change this number to the biggest number, otherwise they won't be able to choose above 15
+  slider_start: 25, // This is the number that the slider starts on, you should always set this to start on the middle number to avoid a subconcious bias (this makes odd numbers more desirable, so stopping on _5 is a good rule of thumb)
+  slider_width: 1100 // If you have added more choices above, you will need to increase this number, otherwise the numbers won't appear properly and participants won't be able to answer (it will just stretch the slider, letting you have more choices). If you have drastical reduced the amount of choices, it might be a good idea to decrease this number (that will make the slider shorter)
+};
+
+
+/*
+These functions are updating the variables at the top of the code, it simply makes
+the primer and circles trials show a new picture everytime.
+*/
+
+function morecircletrials(u){
+  return u + 1;
+};
+
+function moreprimertrials(i){
+  return i + 1;
+};
+
+/*
+If you want to add more trials, just copy and paste line 173-181,
+the two functions just above are responsible for re-shuffling
+the primer and stimulus shown, allowing us to just push the trials to
+the timeline again to add more trials.
+You should probably add another instruction prompt before each repetition letting them know that the experiment will repeat (e.g. instructions3, instructions4... etc).
+*/
+
+
+var instructions2 = {
+  type: "html-keyboard-response",
+  stimulus: "As you can see, it goes very fast.<p>Now that you're ready and know what to expect, let's do it one more time!<p>You will be shown different photos though, so get ready!<p>The experiment will begin after another three second countdown.<p>Press any key to begin the experiment.",
+  choices: jsPsych.AL
+};
+
+var mainprocedure = {
+  timeline: [threetwoone, show_primer, show_circles, how_many_circles]
+};
+
+for(var a=0; a<random_circle_picture_library.length; a++){
+  timeline.push(mainprocedure)
+}
+
+
+//As you can see, the program is properly choosing random primers and amount of circles every time.
+
+    var participantID = jsPsych.randomization.randomID(10); //this generates a random identifier
+    var expt = 'number_estimation'; //name of the experiment
+    jsPsych.data.addProperties({
+      participant: participantID,
+      experiment: expt
+    }); //add this information to the data output
+
+
+    //This is what actually initializes the experiment - you likely will not need to modify anything below this point!
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        var csvname = 'number_estimation_' + participantID + '.csv';
+        jsPsych.data.get().localSave('csv', csvname);
+      } //this automatically saves the data to your local computer
+    });
+  </script>
+</body>
+
+</html>

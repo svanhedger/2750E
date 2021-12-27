@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Flanker Task</title>
+
+  <script src="jspsych-6.3.1/jquery-3.3.1.min.js"></script>
+  <script src="jspsych-6.3.1/jspsych.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+
+  <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+  <script>
+    /*
+--------------------------------------------
+jsPsych Template Script for Psychology 2750E
+--------------------------------------------
+This template sets everything up for you to program and run
+a web-broswer experiment using jsPsych.
+
+jsPsych is a free, open-source JavaScript library for
+designing and running behavioural tasks in a web broswer.
+You do NOT need to download anything from the jsPsych
+website (everything you need is in the jspsych-6.3.1
+folder). However, it is useful to familiarize yourself
+with the jsPsych website, as it contains a wealth of
+information related to its features.
+
+https://www.jspsych.org/
+
+Please use this template during the lab sections as we work
+through various tutorials. You should also start from this
+template as you work through your group programming task.
+
+Some notes --
+A. Commenting code
+
+Most computer languages have the capacity for the
+programmer to add comments. Comments allow you to make notes
+of any sort that do not affect the functionality of your code.
+You should plan to use comments liberally as you work through
+the lab coding tutorials and especially as you work through
+the group programming exercise. The comments will help others
+read and understand your code.
+
+There are a few ways of using comments in JavaScript.
+1. Line-by-line comments: Use '//' (no quotes) to create a comment on a single line.
+Everything to the right of '//' will be treated as a comment and thus will not be run as code.
+
+2. Block comments: Use / * to OPEN a block comment and use * / to CLOSE a block comment.
+Everything you write between these symbols will be treated as a comment and thus will not be run as code.
+(Note: When you are using this for real, don't put a space between the * and the / -- I am inserting the
+space here so that I don't accidentally close off my existing block comment!)
+
+B. Using jsPsych plugins
+
+jsPsych works its magic via plugins - which are distinct JavaScript (.js) files that enable you to
+create screens/trials/procedures using just a few lines of code. The full list of current jsPsych
+plugins can be found on the website:
+
+https://www.jspsych.org/plugins/list-of-plugins/
+
+To USE a plugin, you need to reference it at the top of this page. As you can see, starting on line 9
+of this file I start to load some plugins. These include the 'jspsych-html-keyboard-response' plugin
+and the 'jspsych-html-button-response' plugin.
+
+
+*/
+
+    /*
+    -------------------
+    Define the timeline
+    -------------------
+    jsPsych experiments are created by "pushing" events (trials, procedures etc.) to a variable known as a timeline.
+    In order to use the timeline, every script you write should begin by defining the timeline as an open array
+    (i.e., what if happening in line 86). From there, whenever you want to add something to the experiment, you
+    would need to add this to the timeline. For example, let's say you wanted to create a welcome screen for your
+    experiment, and you named this screen "welcome_screen." You would add this to the experiment by writing:
+    timeline.push(welcome_screen)
+
+    */
+    var timeline = []; //every jsPsych script needs a timeline -- this is what will store the components of the experiment. no need to modify this...it will be a constant for every script you create
+
+    /*
+    ----------------------------------
+    Define the experimental components
+    ----------------------------------
+    Here's where things get interesting! This is the space where you will define the components of the experiment.
+    Remember to push each component of the experiment to the timeline - otherwise it will not be included!
+    For illustration purposes, let's create a simple experiment and push it to the timeline. This experiment
+    will consist of a single question - "Do you like to code?"
+
+    */
+    //Let's get things started by randomly generating a participant identifier and adding both the participant identifier and the experiment name to the data output
+    var participantID = jsPsych.randomization.randomID(20); //this generates a random identifier
+    var expt = 'flanker'; //name of the experiment
+    jsPsych.data.addProperties({
+      participant: participantID,
+      experiment: expt
+    }); //add this information to the data output
+ var instructions = {
+   type: 'html-keyboard-response',
+   stimulus: 'Welcome to the experiment.<br>This is a "Flanker" task. On each trial, you will be presented with one of four stimuli.<br> The images presented will include five incongruent or congruent sequence of arrows.<br> Your task is to identify which direction the middle arrow is pointing by pressing the right or left arrow on your keyboard.<br><br>When you are ready, press space bar to begin.',
+    choices: [' ']
+ };
+
+timeline.push(instructions);
+
+var timelinevar = [
+  {image: 'img/CONGRUENT_01.png', trialtype: 'left', correctresp: 'arrowleft'},
+  {image: 'img/CONGRUENT_02.png', trialtype: 'right', correctresp: 'arrowright'},
+  {image: 'img/INCONGRUENT_01.png', trialtype: 'right', correctresp: 'arrowright'},
+  {image: 'img/INCONGRUENT_02.png', trialtype: 'left', correctresp: 'arrowleft'}
+];
+
+var main_trial = {
+  type: 'image-keyboard-response',
+  stimulus: jsPsych.timelineVariable('image'),
+  choices: ['ArrowLeft','ArrowRight'],
+  trial_duration: 3000,
+  response_ends_trial: true,
+  post_trial_gap: function(){
+    var itis = [100,200,300,400,500,600,700,800];
+    itis = jsPsych.randomization.repeat(itis, 1); //shuffle
+    return itis[0];
+  },
+  data:{condition: jsPsych.timelineVariable('trialtype'), correct_resp: jsPsych.timelineVariable('correctresp')},
+  on_finish: function(data){
+    if(data.response == data.correct_resp){
+      var got_it_right = 1;
+    } else {
+      var got_it_right = 0;
+    }
+    jsPsych.data.addDataToLastTrial({
+      got_it_right: got_it_right
+    });
+  }
+}
+
+var main_procedure = {
+  timeline: [main_trial],
+  timeline_variables: timelinevar,
+  randomize_order: true,
+  sample: {
+    type: 'fixed-repetitions',
+    size: [10,10,10,10]
+    }
+};
+
+timeline.push(main_procedure);
+
+    /*
+    -------------------
+    Initialize the experiment
+    ----------------------------------
+    Chances are that you won't have to touch this part of the script.
+    Basically, this is a built-in jsPsych function that initializes
+    all of the components that you pushed to the timline. It's important
+    that it happens at the very end of the script, once all of your
+    variables have been defined!
+
+    */
+    //This is what actually initializes the experiment - you likely will not need to modify anything below this point!
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        var csvname = expt+ '_' + participantID + '.csv';
+        jsPsych.data.get().localSave('csv', csvname);
+      } //this automatically saves the data to your local computer
+    });
+  </script>
+</body>
+
+</html>

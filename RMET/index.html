@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reading the Mind in the Eyes</title>
+
+  <script src="jspsych-6.3.1/jquery-3.3.1.min.js"></script>
+  <script src="jspsych-6.3.1/jspsych.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-image-button-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-html-button-response.js"></script>
+  <script src="jspsych-6.3.1/plugins/jspsych-preload.js"></script>
+
+  <link href="jspsych-6.3.1/css/jspsych.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<body>
+  <script>
+    /*
+--------------------------------------------
+jsPsych Template Script for Psychology 2750E
+--------------------------------------------
+This template sets everything up for you to program and run
+a web-broswer experiment using jsPsych.
+
+jsPsych is a free, open-source JavaScript library for
+designing and running behavioural tasks in a web broswer.
+You do NOT need to download anything from the jsPsych
+website (everything you need is in the jspsych-6.3.1
+folder). However, it is useful to familiarize yourself
+with the jsPsych website, as it contains a wealth of
+information related to its features.
+
+https://www.jspsych.org/
+
+Please use this template during the lab sections as we work
+through various tutorials. You should also start from this
+template as you work through your group programming task.
+
+Some notes --
+A. Commenting code
+
+Most computer languages have the capacity for the
+programmer to add comments. Comments allow you to make notes
+of any sort that do not affect the functionality of your code.
+You should plan to use comments liberally as you work through
+the lab coding tutorials and especially as you work through
+the group programming exercise. The comments will help others
+read and understand your code.
+
+There are a few ways of using comments in JavaScript.
+1. Line-by-line comments: Use '//' (no quotes) to create a comment on a single line.
+Everything to the right of '//' will be treated as a comment and thus will not be run as code.
+
+2. Block comments: Use / * to OPEN a block comment and use * / to CLOSE a block comment.
+Everything you write between these symbols will be treated as a comment and thus will not be run as code.
+(Note: When you are using this for real, don't put a space between the * and the / -- I am inserting the
+space here so that I don't accidentally close off my existing block comment!)
+
+B. Using jsPsych plugins
+
+jsPsych works its magic via plugins - which are distinct JavaScript (.js) files that enable you to
+create screens/trials/procedures using just a few lines of code. The full list of current jsPsych
+plugins can be found on the website:
+
+https://www.jspsych.org/plugins/list-of-plugins/
+
+To USE a plugin, you need to reference it at the top of this page. As you can see, starting on line 9
+of this file I start to load some plugins. These include the 'jspsych-html-keyboard-response' plugin
+and the 'jspsych-html-button-response' plugin.
+
+
+*/
+
+    /*
+    -------------------
+    Define the timeline
+    -------------------
+    jsPsych experiments are created by "pushing" events (trials, procedures etc.) to a variable known as a timeline.
+    In order to use the timeline, every script you write should begin by defining the timeline as an open array
+    (i.e., what if happening in line 86). From there, whenever you want to add something to the experiment, you
+    would need to add this to the timeline. For example, let's say you wanted to create a welcome screen for your
+    experiment, and you named this screen "welcome_screen." You would add this to the experiment by writing:
+    timeline.push(welcome_screen)
+
+    */
+    var timeline = []; //every jsPsych script needs a timeline -- this is what will store the components of the experiment. no need to modify this...it will be a constant for every script you create
+
+    /*
+    ----------------------------------
+    Define the experimental components
+    ----------------------------------
+    Here's where things get interesting! This is the space where you will define the components of the experiment.
+    Remember to push each component of the experiment to the timeline - otherwise it will not be included!
+    For illustration purposes, let's create a simple experiment and push it to the timeline. This experiment
+    will consist of a single question - "Do you like to code?"
+
+    */
+    //Let's get things started by randomly generating a participant identifier and adding both the participant identifier and the experiment name to the data output
+    var participantID = jsPsych.randomization.randomID(10); //this generates a random identifier
+    var expt = 'RMET'; //name of the experiment
+    jsPsych.data.addProperties({
+      participant: participantID,
+      experiment: expt
+    }); //add this information to the data output
+
+
+    /*
+    ----------------------------------
+    Initialize the experiment
+    ----------------------------------
+    Chances are that you won't have to touch this part of the script.
+    Basically, this is a built-in jsPsych function that initializes
+    all of the components that you pushed to the timline. It's important
+    that it happens at the very end of the script, once all of your
+    variables have been defined!
+
+    */
+    //This is what actually initializes the experiment - you likely will not need to modify anything below this point!
+    jsPsych.init({
+      timeline: timeline,
+      on_finish: function() {
+        var csvname = expt+ '_' + participantID + '.csv';
+        jsPsych.data.get().localSave('csv', csvname);
+      } //this automatically saves the data to your local computer
+    });
+
+    var instructions = {
+      type: 'html-keyboard-response',
+      stimulus: "Welcome to Reading the Eyes and the Mind Test.<br><br> You will be presented with pictures of people's eyes and, along with the pictures, you will also be presented with four adjectives.<br><br> You will be required to select the adjective that you think will best describe the emotion in the image.<br><br> You won't receive any immediate feedback after selecting your choices.<br><br><br> Press spacebar to continue.",
+      choices: [' ']
+    };
+
+    timeline.push(instructions);
+
+    var timelinevar = [
+      {image: 'img/rmet-01.png', tchoices: ['Playful', 'Comforting', 'Irritated', 'Bored'], correctresp: '0'},
+      {image: 'img/rmet-02.png', tchoices: ['Terrified', 'Upset', 'Arrogant', 'Annoyed'], correctresp: '1'},
+      {image: 'img/rmet-03.png', tchoices: ['Joking', 'Flustered', 'Desire', 'Convinced'], correctresp: '2'},
+      {image: 'img/rmet-04.png', tchoices: ['Joking', 'Insisting', 'Amused', 'Relaxed'], correctresp: '1'},
+      {image: 'img/rmet-05.png', tchoices: ['Irritated', 'Sarcastic', 'Worried', 'Friendly'], correctresp: '3'},
+      {image: 'img/rmet-06.png', tchoices: ['Aghast', 'Fantasizing', 'Impatient', 'Alarmed'], correctresp: '1'},
+      {image: 'img/rmet-07.png', tchoices: ['Apologetic', 'Friendly', 'Uneasy', 'Dispirited'], correctresp: '3'},
+      {image: 'img/rmet-08.png', tchoices: ['Despondent', 'Relieved', 'Shy', 'Excited'], correctresp: '0'},
+      {image: 'img/rmet-09.png', tchoices: ['Annoyed', 'Hostile', 'Horrified', 'Preocupied'], correctresp: '4'},
+      {image: 'img/rmet-10.png', tchoices: ['Cautious', 'Insisting', 'Bored', 'Aghast'], correctresp: '0'},
+      {image: 'img/rmet-11.png', tchoices: ['Terrified', 'Amused', 'Regretful', 'Flirtatious'], correctresp: '3'},
+      {image: 'img/rmet-12.png', tchoices: ['Indifferent', 'Embarrased', 'Skeptical', 'Dispirited'], correctresp: '2'},
+      {image: 'img/rmet-13.png', tchoices: ['Decisive', 'Anticipating', 'Threatening', 'Shy'], correctresp: '3'},
+      {image: 'img/rmet-14.png', tchoices: ['Irritated', 'Disappointed', 'Depressed', 'Accusing'], correctresp: '3'},
+      {image: 'img/rmet-15.png', tchoices: ['Contemplating', 'Flustered', 'Encouraging', 'Amused'], correctresp: '1'},
+      {image: 'img/rmet-16.png', tchoices: ['Irritated', 'Thoughtful', 'Encouraging', 'Sympathtic'], correctresp: '1'},
+      {image: 'img/rmet-17.png', tchoices: ['Doubtful', 'Affectionate', 'Playful', 'Aghast'], correctresp: '1'},
+      {image: 'img/rmet-18.png', tchoices: ['Decisive', 'Amused', 'Aghast', 'Bored'], correctresp: '0'},
+      {image: 'img/rmet-19.png', tchoices: ['Arrogant', 'Grateful', 'Sarcastic', 'Tentative'], correctresp: '0'},
+      {image: 'img/rmet-20.png', tchoices: ['Dominant', 'Friendly', 'Guilty', 'Horrified'], correctresp: '1'},
+      {image: 'img/rmet-21.png', tchoices: ['Embarrased', 'Fantasizing', 'Confused', 'Panicked'], correctresp: '2'},
+      {image: 'img/rmet-22.png', tchoices: ['Preoccupied', 'Grateful', 'Insisting', 'Imploring'], correctresp: '0'},
+      {image: 'img/rmet-23.png', tchoices: ['Contented', 'Apologetic', 'Defiant', 'Curious'], correctresp: '2'},
+      {image: 'img/rmet-24.png', tchoices: ['Pensive', 'Irritated', 'Excited', 'Hostile'], correctresp: '0'},
+      {image: 'img/rmet-25.png', tchoices: ['Panicked', 'Incredulous', 'Despondent', 'Interested'], correctresp: '3'},
+      {image: 'img/rmet-26.png', tchoices: ['Alarmed', 'Shy', 'Hostile', 'Anxious'], correctresp: '2'},
+      {image: 'img/rmet-27.png', tchoices: ['Joking', 'Cautious', 'Arrogant', 'Reassuring'], correctresp: '1'},
+      {image: 'img/rmet-28.png', tchoices: ['Interested', 'Joking', 'Affectionate', 'Contented'], correctresp: '0'},
+      {image: 'img/rmet-29.png', tchoices: ['Impatient', 'Aghast', 'Irritated', 'Reflective'], correctresp: '3'},
+      {image: 'img/rmet-30.png', tchoices: ['Grateful', 'Flirtatious', 'Hostile', 'Disappointed'], correctresp: '1'},
+      {image: 'img/rmet-31.png', tchoices: ['Ashamed', 'Confident', 'Joking', 'Dispirited'], correctresp: '1'},
+      {image: 'img/rmet-32.png', tchoices: ['Serious', 'Ashamed', 'Bewildered', 'Alarmed'], correctresp: '0'},
+      {image: 'img/rmet-33.png', tchoices: ['Embarrassed', 'Guilty', 'Fantasizing', 'Concerned'], correctresp: '3'},
+      {image: 'img/rmet-34.png', tchoices: ['Aghast', 'Baffled', 'Distristful', 'Terrified'], correctresp: '2'},
+      {image: 'img/rmet-35.png', tchoices: ['Puzzled', 'Nervous', 'Insisting', 'Contemplative'], correctresp: '1'},
+      {image: 'img/rmet-36.png', tchoices: ['Ashamed', 'Nervous', 'Suspicious', 'Indecisive'], correctresp: '0'},
+
+    ];
+
+
+    var trial = {
+    type: 'image-button-response',
+    stimulus: jsPsych.timelineVariable('image'),
+    choices: jsPsych.timelineVariable('tchoices'),
+    prompt: "<p> What is this person feeling? <br> Select the term that best represents this person's state. </p>",
+    post_trial_gap: 250,
+    data: {correctresp: jsPsych.timelineVariable ('correctresp')},
+    on_finish: function(data) {
+      if(data.response == data.correctresp){
+        var gotitright = 1
+        console.log("correct!")
+      } else {
+        var gotitright = 0
+        console.log("incorrect")
+      };
+      jsPsych.data.addDataToLastTrial({
+        correct: gotitright
+      });
+    }
+};
+
+
+
+    var main_procedure = {
+      timeline: [trial],
+      timeline_variables: timelinevar
+    }
+timeline.push(main_procedure)
+
+  var lastpage = {
+  type: 'html-keyboard-response',
+  stimulus: "You have successfully completed this task! Thank you for participating! Press spacebar to end and submit you data.",
+  choices: [' ']
+};
+
+timeline.push(lastpage);
+
+
+
+    // timeline.push (trial);
+
+  </script>
+</body>
+
+</html>
