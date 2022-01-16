@@ -36,12 +36,12 @@ The speech-in-noise task measures someone's ability to identify spoken words whe
 
 ### Matrix Reasoning Task
 The matrix reasoning task is designed as a measure of fluid intelligence. In this task, you will see a matrix of visual patterns. The lower-right part of the pattern will be missing. Your job is to select the best option that completes the pattern. There are 42 total patterns, and you will have 60 minutes to complete it.<br><br>
-[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/matrix-reasoning/Manual.pdf)<br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/matrix-reasoning/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/matrix-reasoning)
 
 ### Go/No-Go Task
 This is a classic paradigm for measuring cognitive control. On each trial, you will see one of two letters. One letter signals that you must respond as quickly as possible. The other letter signals that you must refrain from responding. 100 total trials. Expected duration: 6-10 minutes.<br><br>
-[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/go-nogo/Manual.pdf)<br>
+[[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/go-nogo/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/go-nogo)
 
 ### Attention Network Test
