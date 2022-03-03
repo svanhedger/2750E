@@ -54,4 +54,9 @@ The Simon Task is based on the popular memory game in which individuals must rem
 [[READ THE USER MANUAL]](https://run.pavlovia.org/2750e/simon/Dossier.pdf)<br>
 [[BEGIN!]](https://run.pavlovia.org/2750e/simon)
 
+------------------------------------
+## Class Demos
 
+### Tone Learning Task
+Short demonstration of a tonal statistical learning task.
+[[BEGIN!]](https://run.pavlovia.org/2750e/SL)
