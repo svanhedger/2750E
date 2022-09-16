@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2750E - JND</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <script src="https://unpkg.com/jspsych@7.3.0"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-animation@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-audio-slider-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-browser-check@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-categorize-animation@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-categorize-html@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-categorize-image@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-cloze@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-external-html@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-free-sort@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-html-slider-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-html-video-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-iat-html@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-iat-image@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-image-slider-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-initialize-camera@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-maxdiff@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-mirror-camera@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-reconstruction@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-resize@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-same-different-html@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-same-different-image@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time-mouse@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-sketchpad@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-video-keyboard-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-video-slider-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-virtual-chinrest@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-visual-search-circle@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@1.1.1"></script>
+ <script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@1.1.1"></script>
+
+	 <link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+<script>
+
+/*
+
+
+///////////////////////////////////////////////////
+// Just Noticeable Difference for Auditory Pitch //
+///////////////////////////////////////////////////
+
+Stephen Van Hedger, 2022
+
+This experiment uses a 3AFC staircase (two-up, one-down)
+to determine a participant's just noticeable difference
+for pitch. Participants are tested on piano tones.
+
+*/
+
+//Timeline and other Variables
+var jsPsych = initJsPsych({on_finish: function(){jsPsych.data.get().localSave('csv','mydata-jnd.csv');}}); //initialize jsPsych before loading any js modules that depend on it!
+var timeline = []; //this is the timeline to which all trials are pushed
+var totalTrials = 50; //this is how many trials participants will experience for each subtest
+
+//Participant ID
+var subjID = jsPsych.randomization.randomID(15); //random alphanumeric identifier
+var pianoFirst = Math.floor(Math.random()*2) //randomly determine ordering
+
+//Tones
+var piano_standard = 'tones/piano/00.mp3'; //standard piano tone (G5)
+var complex_standard = 'tones/complex/00.mp3'; //standard complex tone (G5)
+
+var piano_array = ['tones/piano/100.mp3', 'tones/piano/75.mp3', 'tones/piano/50.mp3', 'tones/piano/40.mp3', 'tones/piano/30.mp3', 'tones/piano/25.mp3', 'tones/piano/20.mp3', 'tones/piano/18.mp3', 'tones/piano/16.mp3', 'tones/piano/14.mp3', 'tones/piano/12.mp3', 'tones/piano/10.mp3', 'tones/piano/08.mp3', 'tones/piano/06.mp3', 'tones/piano/04.mp3', 'tones/piano/02.mp3'];
+var complex_array = ['tones/complex/100.mp3', 'tones/complex/75.mp3', 'tones/complex/50.mp3', 'tones/complex/40.mp3', 'tones/complex/30.mp3', 'tones/complex/25.mp3', 'tones/complex/20.mp3', 'tones/complex/18.mp3', 'tones/complex/16.mp3', 'tones/complex/14.mp3', 'tones/complex/12.mp3', 'tones/complex/10.mp3', 'tones/complex/08.mp3', 'tones/complex/06.mp3', 'tones/complex/04.mp3', 'tones/complex/02.mp3'];
+var all_audio = [...piano_array, ...complex_array, ...['tones/piano/00.mp3', 'tones/complex/00.mp3']];
+
+var preload_files = {
+	type: jsPsychPreload,
+	audio: all_audio,
+	continue_after_error: false,
+	message: `Loading...`
+};
+
+
+var cent_lookup = [100, 75, 50, 40, 30, 25, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2]; //for looking up current cent difference
+var pianoIndex = 0; //start at the beginning of the piano array (i.e., at 100 cents)
+var complexIndex = 0; //start at the beginning of the complex array (i.e., at 100 cents)
+
+var twoDownTicker = 0; //for counting wrong responses
+
+var p_array_current = []; //this is what will hold the actual piano tones for each trial
+var c_array_current = []; //this is what will hold the actual complex tones for each trial
+
+var curCorrect; //for storing the current correct location of the different tone
+
+var pianoNum = 0; //for counting trials
+var complexNum = 0; //for counting trials
+var gotItRight; //for logging correct/incorrect
+
+//Introduction Screens
+var intro_general = {
+	type: jsPsychHtmlButtonResponse,
+	stimulus: '<p style="color:#e31838;"><b>Psychophysics Demonstration - Difference Thresholds</b></p>' +
+			  '<p>In this mini-study, you will get a first-hand feel of <b>difference thresholds</b><p>' +
+			  '<p>On each trial, you will hear <em>three</em> piano tones.</br>You must determine whether the first, second, or third tone sounds different compared to the other two.</p>' +
+			  '<p>You will make 50 judgments in total.</p>',
+	choices: ['Continue'],
+	post_trial_gap: 200
+};
+
+var intro_piano = {
+	type: jsPsychHtmlButtonResponse,
+	stimulus: '<p>Press the button below when you are ready to begin</b></p>',
+	choices: ['Begin'],
+	post_trial_gap: 200
+};
+
+
+//PIANO EXPT
+var piano_setup = {
+	type: jsPsychHtmlKeyboardResponse,
+	stimulus: '<p style="font-size: 40px;">+</p>',
+	trial_duration: 750,
+	choices: `NO_KEYS`,
+	post_trial_gap: 0,
+	on_finish: function(){
+		p_array_current = [{tone: piano_standard, deviant: 0}, {tone: piano_standard, deviant: 0}, {tone: piano_array[pianoIndex], deviant: 1}];
+		p_array_current = jsPsych.randomization.shuffle(p_array_current);
+	}
+};
+
+var buffer_screen = {
+	type: jsPsychHtmlKeyboardResponse,
+	stimulus: '<p style="font-size: 40px;">+</p>',
+	trial_duration: 500,
+	choices: `NO_KEYS`,
+};
+
+var piano_01 = {
+	type: jsPsychAudioKeyboardResponse,
+	stimulus: function(){return p_array_current[0].tone;},
+	choices: `NO_KEYS`,
+	trial_duration: 500,
+	on_finish: function(){
+		if(p_array_current[0].deviant == 1){
+			curCorrect = "1";
+			return curCorrect;
+			}
+	}
+};
+
+var piano_02 = {
+	type: jsPsychAudioKeyboardResponse,
+	stimulus: function(){return p_array_current[1].tone;},
+	choices: `NO_KEYS`,
+	trial_duration: 500,
+	on_finish: function(){
+		if(p_array_current[1].deviant == 1){
+			curCorrect = "2";
+			return curCorrect;
+			}
+		}
+};
+
+var piano_03 = {
+	type: jsPsychAudioKeyboardResponse,
+	stimulus: function(){return p_array_current[2].tone;},
+	choices: `NO_KEYS`,
+	trial_duration: 500,
+	on_finish: function(){
+		if(p_array_current[2].deviant == 1){
+			curCorrect = "3";
+			return curCorrect;
+			}
+		}
+};
+
+
+var P_RESP_3AFC = {
+	type: jsPsychHtmlKeyboardResponse,
+	stimulus: '<p>Which tone sounded different?</p>' +
+			  '<p><b>1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</b></p>' +
+			  '<p>(press the corresponding number on the keyboard)</p>',
+	choices: ['1','2','3'],
+	on_finish: function(data){
+		var curResp = jsPsych.data.get().last(1).values()[0].response; //ascii response by participant
+		var curCor = curCorrect; //convert correct answer to ascii
+		console.log(curResp, curCor);
+
+		var curCent = cent_lookup[pianoIndex];
+		if(curResp == curCor){
+			gotItRight = 1;
+			twoDownTicker += 1; //increase the two-down ticker
+			if(twoDownTicker == 2){
+				if(pianoIndex+1 == piano_array.length){
+					pianoIndex += 0; //this doesn't change the difference if people are at the limit
+				} else if (pianoIndex < piano_array.length) {
+					pianoIndex += 1; //this makes the difference smaller for a correct answer
+				}
+				twoDownTicker = 0; //reset the two-down counter
+			}
+			} else {
+			gotItRight = 0;
+			twoDownTicker = 0; // reset the two-down ticker
+				if(pianoIndex == 0) {
+					pianoIndex = 0;
+					} else {
+					pianoIndex -= 1;
+					}
+		}
+		pianoNum += 1; //for data output
+		console.log(curCent, gotItRight, pianoIndex, twoDownTicker)
+
+		jsPsych.data.addDataToLastTrial({
+			designation: 'piano-resp',
+			current_cents: curCent,
+			correct: gotItRight,
+			trial_num: pianoNum
+			})
+	}
+};
+
+var piano_proc = {
+	timeline: [piano_setup, buffer_screen, piano_01, piano_02, piano_03, P_RESP_3AFC]
+}
+
+
+//WRAPUP
+var shortbreak = {
+	type: jsPsychHtmlButtonResponse,
+	stimulus: '<p>Thank you for your responses!</p>',
+	choices: ['Show Results']
+};
+
+
+var exptend = {
+	type: jsPsychHtmlKeyboardResponse,
+	stimulus: function(){return '<p><em>Please copy the JND values and your participation code. You will need to reference them for your reflection!</em></p><p style="color:green"><b>Piano Tones</b></p><p style="color:green">Your JND is <b>'+cent_lookup[pianoIndex]+'</b> cents.</p>'+
+			  '<p><em>(for reference 1 cent corresponds to approximately a 0.06% change in frequency)</em></p>' +
+			  '<p>(press s to save your data )</p>';},
+	choices: ['s']
+};
+
+
+//PUSH THE EXPERIMENT TO THE TIMELINE
+
+//introduction
+timeline.push(preload_files);
+timeline.push(intro_general);
+
+//adaptive presentation of blocks based on 'pianoFirst'
+
+
+timeline.push(intro_piano);
+for (var i=0; i<totalTrials; i++){
+	timeline.push(piano_proc);
+}
+
+
+//wrap-up
+timeline.push(shortbreak);
+timeline.push(exptend);
+
+jsPsych.run(timeline);
+
+</script>

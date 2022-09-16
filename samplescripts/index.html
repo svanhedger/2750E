@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="shortcut icon" href="favicon.ico">
+<title>Psych 2750E | Scripts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<style>
+body,h1,h2,h3,h4,h5,h6,p {font-family: "Arial", sans-serif}
+.w3-navbar,h1,button {font-family: "Arial", sans-serif}
+.fa-anchor,.fa-coffee {font-size:150px}
+ ul {background-color: #e31838;}
+ a:hover {color: black}
+
+ hr.rounded {
+  border-top: 5px solid #bbb;
+  border-radius: 0px;
+  width:100%;
+  display: inline-block;
+  vertical-align:center;
+}
+
+button {
+	background-color: #fff;
+	border: 2px solid #e31838;
+	border-radius: 5px;
+	margin:5px;
+}
+
+button:hover,
+button:focus {
+	background-color: #e31838;
+	color: white;
+	border: 2px solid #e31838;
+	transition: 0.1s;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color:#000;
+  height: 1px;
+}
+
+
+</style>
+<body>
+
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <ul class="w3-navbar w3-card-2 w3-left-align w3-large">
+      <li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+        <a class="w3-padding-large w3-hover-white w3-large w3-grey" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      </li>
+      <li><a href="https://svanhedger.github.io/2750E/" class="w3-padding-large w3-hover-white" style=color:white>Home</a></li>
+  	<li class="w3-hide-small"><a href="https://svanhedger.github.io/2750E/samplescripts" class="w3-padding-large w3-white" style=color:white>Sample Scripts</a></li>
+  	<li class="w3-hide-small"><a href="https://svanhedger.github.io/2750E/jstutorial" class="w3-padding-large w3-hover-white" style=color:white>JavaScript Tutorial</a></li>
+    <li class="w3-hide-small"><a href="https://svanhedger.github.io/2750E/jspsychtutorial" class="w3-padding-large w3-hover-white" style=color:white>jsPsych Tutorial</a></li>
+    <li class="w3-hide-small"><a href="https://svanhedger.github.io/2750E/groupprojects" class="w3-padding-large w3-hover-white" style=color:white>Group Projects</a></li>
+    </ul>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+      <ul class="w3-navbar w3-left-align w3-large w3-indigo">
+  	  <li><a class="w3-padding-large" style=color:white href="https://svanhedger.github.io/2750E/samplescripts">Sample Scripts</a></li>
+  	  <li><a class="w3-padding-large" style=color:white href="https://svanhedger.github.io/2750E/jstutorial">JavaScript Tutorial</a></li>
+      <li><a class="w3-padding-large" style=color:white href="https://svanhedger.github.io/2750E/jspsychtutorial">jsPsych Tutorial</a></li>
+      <li><a class="w3-padding-large" style=color:white href="https://svanhedger.github.io/2750E/groupprojects">Group Projects</a></li>
+      </ul>
+    </div>
+  </div>
+
+<!-- Header -->
+<header class="w3-container w3-white w3-center w3-padding-64">
+  <h1 class="w3-margin w3-xxlarge"><b>Sample Scripts</b></h1>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-16 w3-container">
+  <div class="w3-content">
+    <div class="w3-threequarter">
+      <h2 class "w3-medium w3-large"><b>Overview</b></h2>
+      <h5 class="w3-padding-16" style="text-align:justify;">Here are some sample scripts written in <a href="https://www.jspsych.org" style="color:#e31838;"><b>jsPsych</b></a>. jsPsych is an excellent JavaScript library, created by Josh de Leeuw, for designing behavioral experiments that run in a web browser.
+	  jsPsych provides a framework for defining experiments using a set of flexible plugins that create different kinds of tasks a subject could complete during an experiment.
+	  By assembling these different plugins together it is possible to create many different types of experiments - including psychophysical paradigms that are relevant for conducting research in sensation and perception.
+    It is my hope that these script provide some inspiration for your group research projects in terms of introducing you to some classic approaches of studying perception.</p></h5>
+
+    </div>
+
+    <div class="w3-quarter w3-right">
+      <figure><img src="img/jspsych-logo.jpg" alt="" style="width:29vw;height:31vh;"></figure>
+    </div>
+  </div>
+</div>
+
+
+  <hr class="rounded"></hr>
+<div class="w3-row-padding w3-padding-16 w3-container w3-light-grey">
+  <div class="w3-content">
+    <div class="w3-threequarter">
+      <h2 class "w3-medium w3-large"><b>Scripts</b></h2>
+
+    <h3 class="w3-padding-16"><b style="color:#e31838;">Difference Thresholds</b><div style="float:right;"><button><a style="text-decoration: none;" href="https://svanhedger.github.io/2750E/samplescripts/JND/">Try It!</a></button><button><a style="text-decoration: none;" href="https://github.com/svanhedger/2750E/tree/master/samplescripts/JND/">See the Code</a></button></div></h3>
+	  <h5 style="text-align:justify;">This script introduces the concept of <em>difference thresholds</em> - i.e., the minimal change along some perceptual dimension that can be reliably judged.
+    The current sample assesses your difference threshold for auditory pitch. On each trial, you will hear three piano tones. One of these tones will be different from the other two, and you must determine which tone is different.
+    This script uses a "staircase" procedure, which is a common design in psychophysics research. If you get two answers correct in a row, the task becomes harder (i.e., the pitch difference becomes smaller).
+    If you get an answer incorrect, the task becomes easier (i.e., the pitch difference becomes larger). Thus, we can assess your threshold by examining where your performance levels off. In this sample script,
+    there are 50 total trials. Participation should take under 10 minutes, and you have the option of saving your data to your computer at the end.</h5>
+	  <hr>
+	  <h3 class="w3-padding-16"><b style="color:#e31838;">Signal Detection Theory</b><div style="float:right;"><button><a style="text-decoration: none;" href="https://svanhedger.github.io/2750E/samplescripts/SDT/">Try It!</a></button><button><a style="text-decoration: none;" href="https://github.com/svanhedger/2750E/tree/master/samplescripts/SDT/">See the Code</a></button></div></h3>
+	  <h5 style="text-align:justify;">This script introduces the concept of <em>signal detection theory</em>. Signal detection theory is a way of distinguishing between information-bearing patterns ("signals") and random patterns ("noise").
+    It is theoretically motivated by the fact that perception is a decision-making process. Perceptual decisions are constantly being made in the presence of noise: both external noise (like background conversation) and internal noise (from your nervous system).
+    Thus, it is important to quantify an individual's ability to differentiate "signal+noise" patterns from "noise only" patterns, which is referred to as a participant's <em>sensitivity</em>.
+    Additionally, signal detection theory is important because it allows us to quantify an individual's general tendency to respond in a particular way (e.g., responding more liberally that a signal is present or responding more conservatively that a signal is not present).
+    This response tendency is referred to as a participant's criterion, and it is independent from their sensitivity.
+    In this sample script, you will be experiencing a classic scenario in which signal detection theory is at work - listening for the faint sound of a doorbell, which may or may not be be embedded in background noise.
+    If you respond that the doorbell sound was present and it really was, this would be considered a "hit". If you responded that the doorbell sound was present and it was only random noise, this would be considered a "false alarm".
+    If you respond that the doorbell sound was not present and it really was, this would be considered a "miss". Finally, if you respond that the doorbell sound was not present and it was only random noise, this would be considered a "correct reject".
+    There are 30 total trials. Participation should take under 10 minutes, and you have the option of saving your data to your computer at the end.</h5>
+	  <hr>
+	  <h3 class="w3-padding-16"><b style="color:#e31838;">Perceptual Estimation</b><div style="float:right;"><button><a style="text-decoration: none;" href="https://svanhedger.github.io/2750E/samplescripts/EST/">Try It!</a></button><button><a style="text-decoration: none;" href="https://github.com/svanhedger/2750E/tree/master/samplescripts/EST/">See the Code</a></button></div></h3>
+	  <h5 style="text-align:justify;">This script introduces the concept of <em>perceptual estimation / reproduction</em>. Estimation paradigms provide more flexibility in assessing an individual's perceptual experience of a stimulus.
+    The general approach is quite straightforward - a "target" stimulus is shown, played, etc. and then participants have to reproduce this target stimulus as accurately as possible. For example, a participant might be shown a particular color (the "target" color)
+    and then be presented with a color wheel, which they have to click to estimate the target color to the best of their ability. Estimation tasks can provide insight into systematic biases in perception, as responses are not simply "correct" or "incorrect".
+    Rather, the researcher can examine whether there are systematic biases or shifts in an individual's response relative to the target stimulus, providing insights into perceptual experience. In this sample script, you will be reproducing a briefly heard tone.
+    You will reproduce this tone by clicking on arrow buttons on the screen, which will move a starting tone up or down in pitch. There are 16 total trials. Participation should take under 10 minutes, and you have the option of saving your data to your computer at the end.</h5>
+	  <hr>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+<p style="font-size:10px"><center>&#169; Stephen Van Hedger. Website template adapted from from W3Schools.com. Updated September 2022.</center></p>
+</h5>
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
+
+</body>
+</html>
