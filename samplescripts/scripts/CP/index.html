@@ -201,7 +201,7 @@ var speech_cat = {
 
 //Feedback Graph
 var feedback_screen = {
-	type: 'html-keyboard-response',
+	type: jsPsychHtmlKeyboardResponse,
 	stimulus: function(){
 		var html = '<p>Here is a summary of your performance.</p><div id="myDiv" style="width:65vw;height:65vh;"></div><p>Based on the principles of categorical perception, your responses should not gradually change from "ba" to "da". Rather, you should see a sharp boundary change, representing the categorical nature of how these sounds are heard.</p><p>Press "q" to save your raw data.</p>';
 		setTimeout(function(){
