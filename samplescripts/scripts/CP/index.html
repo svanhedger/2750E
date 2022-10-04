@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2750E - CP</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/jspsych@7.3.0"></script>
+<script src="https://unpkg.com/@jspsych/plugin-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-browser-check@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-cloze@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-external-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-free-sort@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-video-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-maxdiff@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-mirror-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-reconstruction@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-resize@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time-mouse@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-sketchpad@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-html-form@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-virtual-chinrest@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-visual-search-circle@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@1.1.1"></script>
+
+<link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+<link href="css/buttons.css" rel="stylesheet" type="text/css">
+	
+
+
+</head>
+
+<body>
+
+<script>
+
+/*
+
+
+//////////////////////////////////////
+// Categorical Perception of Speech //
+//////////////////////////////////////
+
+Stephen Van Hedger, 2020
+
+This experiment demos classic categorical perception for speech sounds
+(ranging from 'ba' to 'da'). 
+
+*/
+
+//Timeline and other Variables
+var jsPsych = initJsPsych({on_finish: function(){jsPsych.data.get().localSave('csv','mydata-cp.csv');}}); //initialize jsPsych before loading any js modules that depend on it!
+var timeline = []; //this is the timeline to which all trials are pushed
+var totalTrials = 54; //this is how many trials participants will experience for each subtest
+
+//Participant ID
+var identifier = jsPsych.randomization.randomID(15); //random alphanumeric identifier
+
+//Tones
+
+var speech_array = ['audMain/speech/bd_01.mp3', 'audMain/speech/bd_02.mp3', 'audMain/speech/bd_03.mp3', 'audMain/speech/bd_04.mp3', 'audMain/speech/bd_05.mp3', 'audMain/speech/bd_06.mp3', 'audMain/speech/bd_07.mp3', 'audMain/speech/bd_08.mp3', 'audMain/speech/bd_09.mp3'];
+
+var preload_media = {
+	type: jsPsychPreload,
+	audio: speech_array,
+	continue_after_error: true,
+	message: `Loading...`
+};
+
+
+/*******************/
+/** PLAY EXAMPLES **/
+/*******************/
+
+var numBA = 0; //to log the number of times the participant plays the BA sample
+var numDA = 0; //to log the number of times the participant plays the DA sample
+
+
+function playBA() {
+	var playBA = new Audio('examples/BA.mp3');	
+	playBA.play(); //this actually plays the file	
+	//Log the button press in an ongoing array for the trial
+	numBA += 1;
+};
+
+function playDA() {
+	var playDA = new Audio('examples/DA.mp3');	
+	playDA.play(); //this actually plays the file	
+	//Log the button press in an ongoing array for the trial
+	numDA += 1;
+};
+
+
+//Introduction Screens
+var intro_general = {
+	type: jsPsychHtmlButtonResponse,
+	stimulus: '<p style="color:#e31838;"><b>Psychophysics Demonstration - Categorical Perception</b></p>' +
+			  '<p>Welcome!</p><p>In this study, you will get a first-hand feel of <b>categorical perception</b><p>' +
+			  '<p>On each trial, you will hear a sound. You will be asked to categorize this sound based on the labels provided on the computer screen.</p>' +
+			  '<p>You will make 72 judgments in total. Participation is expected to take about 10 minutes</p>',
+	choices: ['Continue'],
+	post_trial_gap: 200
+};
+
+var intro_speech = {
+	type: jsPsychHtmlButtonResponse,
+	stimulus: '<p>The sounds you will hear are <b>speech sounds</b></p>' +
+		      '<p>On each trial, you will hear a single sound. You will be asked to categorize the sound as either <b>ba</b> or <b>da</b>.' +
+			  '<p>To hear clear examples of these two categories, press the blue buttons below.</p>' +
+			  "<p><input class='jspsych-btn' style='background-color:powderblue;' id='BA' type='button' value='BA' onclick='playBA()'><audio id='playerBA' src=''></audio></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+			  "<input class='jspsych-btn' style='background-color:powderblue;' id='DA' type='button' value='DA' onclick='playDA()'><audio id='playerDA' src=''></audio></input></p>",
+	choices: ['Begin'],
+	post_trial_gap: 200
+};
+
+
+//Timeline Variables
+var speech_vars = [
+{file: 'audMain/speech/bd_01.mp3', step: 0, cat: 'speech'},
+{file: 'audMain/speech/bd_02.mp3', step: 1, cat: 'speech'},
+{file: 'audMain/speech/bd_03.mp3', step: 2, cat: 'speech'},
+{file: 'audMain/speech/bd_04.mp3', step: 3, cat: 'speech'},
+{file: 'audMain/speech/bd_05.mp3', step: 4, cat: 'speech'},
+{file: 'audMain/speech/bd_06.mp3', step: 5, cat: 'speech'},
+{file: 'audMain/speech/bd_07.mp3', step: 6, cat: 'speech'},
+{file: 'audMain/speech/bd_08.mp3', step: 7, cat: 'speech'},
+{file: 'audMain/speech/bd_09.mp3', step: 8, cat: 'speech'}
+]
+
+speech_vars = jsPsych.randomization.repeat(speech_vars, 8);
+
+
+//Variables for storing responses (for summary plots) - clunky but works
+var s_ans = [0,0,0,0,0,0,0,0,0]; //speech
+
+
+//Main Trial Screens
+var fixation = {
+	type: jsPsychHtmlKeyboardResponse,
+	stimulus: '<p style="font-size:40px;">+</p>',
+	trial_duration: 500,
+	choices: `NO_KEYS`
+};
+
+//speech
+var speech_cat = {
+	type: jsPsychAudioButtonResponse,
+	stimulus: jsPsych.timelineVariable('file'),
+	prompt: '<p>Please classify the sound you heard.</p>',
+	choices: ['ba', 'da'],
+	post_trial_gap: 500,
+	data: {step: jsPsych.timelineVariable('step'), type: jsPsych.timelineVariable('cat')},
+	on_finish: function(data){
+		var curRESP = data.response; //what the participant heard
+		if(curRESP == 1){
+			var index = data.step; //what step was heard
+			s_ans[index] += 1; //does this work? yes.
+		}
+	}
+};
+
+
+
+//Feedback Graph
+var feedback_screen = {
+	type: 'html-keyboard-response',
+	stimulus: function(){
+		var html = '<p>Here is a summary of your performance.</p><div id="myDiv" style="width:65vw;height:65vh;"></div><p>Based on the principles of categorical perception, your responses should not gradually change from "ba" to "da". Rather, you should see a sharp boundary change, representing the categorical nature of how these sounds are heard.</p><p>Press "q" to save your raw data.</p>';
+		setTimeout(function(){
+		var speechPlot = {
+		x: [1,2,3,4,5,6,7,8,9],
+		y: [s_ans[0], s_ans[1], s_ans[2], s_ans[3], s_ans[4], s_ans[5], s_ans[6], s_ans[7], s_ans[8]],
+		mode: 'scatter',
+		opacity: 0.5,
+		name: 'BA-DA',
+		marker: {
+			size: 10,
+			color: 'rgb(255, 0, 0)',
+			line: {
+				color: 'rgb(255, 0, 0)',
+				width: 3
+			}
+		}
+	};	
+		
+		var layout = {
+		title: '',
+		xaxis: {
+			title: 'Stimulus Steps',
+			titlefont: {
+				family: 'Arial, sans-serif',
+				size: 14
+				}
+				},
+		yaxis: {
+			title: 'Number of DA Responses',
+			titlefont: {
+				family: 'Arial, sans-serif',
+				size: 14
+				}
+				}
+		};				
+
+		var data = [speechPlot];
+
+		Plotly.newPlot('myDiv', data, layout);
+		}, 500);
+
+		return [html];},
+	choices: ['q']
+};
+
+//Define the procedures
+var speech_proc = {
+	timeline: [fixation, speech_cat],
+	timeline_variables: speech_vars
+}
+
+
+
+//Push everything to timeline!
+timeline.push(intro_general);
+
+
+timeline.push(intro_speech, speech_proc, feedback_screen);
+
+
+jsPsych.run(timeline);
+
+</script>
