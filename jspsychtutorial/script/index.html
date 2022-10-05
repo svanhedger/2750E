@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Name of Your Study Goes Here!</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/jspsych@7.3.0"></script>
+<script src="https://unpkg.com/@jspsych/plugin-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-browser-check@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-cloze@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-external-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-free-sort@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-video-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-maxdiff@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-mirror-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-reconstruction@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-resize@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time-mouse@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-sketchpad@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-html-form@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-virtual-chinrest@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-visual-search-circle@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@1.1.1"></script>
+
+<link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+<script>
+
+/*
+
+
+///////////////////////////////////////
+// Name of Your Experiment Goes Here //
+///////////////////////////////////////
+
+In this section, you should write out a short description of what
+your experiment is about. What does it assess? What are the tasks?
+This doesn't affect the functionality of your code in any way
+but it does help the "readability" of your code - i.e., makes it
+easier for someone else to follow along with what you are doing.
+
+
+*/
+
+
+/*
+Timeline and other Variables
+
+You don't need to touch the next couple of lines of code. However, you
+still might be wondering what they do / why they are important. The first
+part establishes jsPsych as a variable, which is critical for then being
+able to use all of its associated functions and "plugins". This line also
+adds a custom function to save your data at the end of the experiment.
+
+The second line establishes a "timeline" variable. As you can see, at the 
+moment it is just an empty array. As you program your experiment, you will
+be adding trials (e.g., instruction trials) to this array using a handy
+built-in JavaScript function called "push". So, even though the timeline array
+is empty at the beginning, if we create an instructions screen, we can add it 
+to the timeline array by simply writing:
+
+timeline.push(instuctions);
+
+Where "instructions" references the variable name of your instructions.
+
+*/
+var jsPsych = initJsPsych({on_finish: function(){jsPsych.data.get().localSave('csv','data.csv');}}); //no need to touch this line - this initializes jsPsych and tells it to save your data at the end of the experiment!
+var timeline = []; //no need to touch this line either - jsPsych works by adding trials or blocks of trials to a "timeline" - as you can see, at the moment this is an empty array
+
+/*
+Your code goes below!
+*/
+
+
+/*
+Wrapping up the Experiment
+
+You don't need to touch this part of the code either. Essentially, at the very end of the script, 
+you are telling jsPsych to run the timeline of different trials you have created. This is what 
+actually makes the webpage interactive!
+
+*/
+jsPsych.run(timeline);
+
+</script>
