@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sound Perception Study</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/jspsych@7.3.0"></script>
+<script src="https://unpkg.com/@jspsych/plugin-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-audio-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-browser-check@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-animation@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-categorize-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-cloze@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-external-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-free-sort@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-html-video-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-iat-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-image-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-instructions@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-maxdiff@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-mirror-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-preload@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-reconstruction@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-resize@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-html@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-same-different-image@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-serial-reaction-time-mouse@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-sketchpad@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-html-form@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-keyboard-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-slider-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-virtual-chinrest@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-visual-search-circle@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-video-button-response@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-calibrate@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-init-camera@1.1.1"></script>
+<script src="https://unpkg.com/@jspsych/plugin-webgazer-validate@1.1.1"></script>
+
+<link href="https://unpkg.com/jspsych@7.3.0/css/jspsych.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+
+<script>
+
+/* 
+Yanny or Laurel: Does Self-Reported Hearing
+History and Difference Thresholds for Higher
+Frequencies Relate to the Perception of an 
+Ambiguous Auditory Object?
+
+Stephen Van Hedger
+Autumn 2022
+
+This project examines individual differences
+in the perception of 'Yanny' versus 'Laurel'
+in a well-documented auditory illusion. 
+The project contains three parts.
+
+1. Participants hear the auditory illusion
+and judge whether they hear Yanny or Laurel
+
+2. Participants complete a difference 
+threshold test, in which they listen to 
+two tones on each trial and determine whether
+they are the same or different (50% are same,
+50% are different, 84 total trials)
+
+3. Participants complete some self-report 
+measures (age and selected questions from
+the Noise Exposure Questionnaire)
+
+Given prior work suggesting that the perception
+of 'Yanny' is tied to higher auditory frequencies,
+we predict that the likelihood of hearing 'Yanny'
+(versus 'Laurel') will be associated with
+
+A. Better difference threshold performance
+B. Younger participants
+C. Participants who report less exposure to loud noises
+
+
+*/
+
+
+var jsPsych = initJsPsych({on_finish: function(){jsPsych.data.get().localSave('csv','data.csv');}}); //no need to touch this line - this initializes jsPsych and tells it to save your data at the end of the experiment!
+var timeline = []; //no need to touch this line either - jsPsych works by adding trials or blocks of trials to a "timeline" - as you can see, at the moment this is an empty array
+var participant = jsPsych.randomization.randomID(15); //randomly generated participant id
+jsPsych.data.addProperties({participant: participant}); //add to data output
+
+//Instructions
+var instructions_01 = {
+    type: jsPsychInstructions,
+    pages: [
+    '<p>Welcome to the experiment.</p><p>Click next to begin.</p>',
+    '<p>You will be asked to make judgments about sounds you hear.</p><p>Afterwards, you will be asked some questions about your age and hearing.</p>',
+    'Click on the Next button to begin!'
+    ],
+    show_clickable_nav: true
+};
+
+timeline.push(instructions_01);
+
+//Yanny-Laurel Specific Instructions
+var instructions_02 = {
+    type: jsPsychInstructions,
+    pages: [
+    '<p>In the first part of the experiment, you will hear a sound.</p><p>This sound will be played twice.</p>',
+    '<p>Please listen carefully to this sound and think about whether it sounds more like the person is saying "Yanny" or "Laurel"</p>',
+    '<p>If you are not sure, please go with your initial gut impression.</p><p>Click on the Next button to hear the sound!</p>'
+    ],
+    show_clickable_nav: true
+};
+
+timeline.push(instructions_02);
+
+//1. Presenting Our Illusion(s)
+var audio_illusion_presentation = {
+    type: jsPsychAudioButtonResponse,
+    stimulus: 'sounds/laurel-yanny.wav',
+    choices: ['Laurel', 'Yanny'],
+    prompt: "<p>Do you hear <b>'Laurel'</b> or <b>'Yanny'</b>?</p><p><em>(Press the corresponding button to lock in your response.)</em></p>",
+    on_finish: function(data){
+        var response = data.response;
+        jsPsych.data.get().addToLast({heard_as_yanny: response});
+    }
+};
+
+timeline.push(audio_illusion_presentation);
+
+/*
+var visual_illusion_presentation = {
+    type: jsPsychImageButtonResponse,
+    stimulus: 'images/thedress.jpg',
+    choices: ['Blue & Black', 'White & Gold'],
+    prompt: "<p>What colors are the dress?</p><p>(Press the corresponding button to lock in your response.)</p>",
+    on_finish: function(data){
+        var response = data.response;
+        jsPsych.data.get().addToLast({seen_as_whitegold: response});
+    }
+};
+
+timeline.push(visual_illusion_presentation);
+*/
+
+//Performance-Based Perceptual Task Instructions
+var instructions_03 = {
+    type: jsPsychInstructions,
+    pages: [
+    '<p>Thanks for your response.</p>',
+    '<p>You will now be asked to make judgments about tones that you hear.</p><p>On each trial, you will hear two tones.</p><p>Your task is to judge whether or not they sound the <b>same</b> or <b>different</b>.</p><p><em>(for reference, if the tones are different, then the second tone will sound either higher or lower than the first tone)</em></p>',
+    '<p>You will make 84 judgments in total.</p><p>This part of the experiment is expected to last approximately 10 minutes.</p><p>Click on the Next button to begin!'
+    ],
+    show_clickable_nav: true
+};
+
+timeline.push(instructions_03);
+
+
+//creating our timeline variables
+var perceptual_task_variables = [
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/00.wav", correct_resp: 0, type: "same", difference: 0},
+    {sound: "sounds/05.wav", correct_resp: 1, type: "different", difference: 5},
+    {sound: "sounds/10.wav", correct_resp: 1, type: "different", difference: 10},
+    {sound: "sounds/15.wav", correct_resp: 1, type: "different", difference: 15},
+    {sound: "sounds/20.wav", correct_resp: 1, type: "different", difference: 20},
+    {sound: "sounds/25.wav", correct_resp: 1, type: "different", difference: 25},
+    {sound: "sounds/50.wav", correct_resp: 1, type: "different", difference: 50},
+    {sound: "sounds/100.wav", correct_resp: 1, type: "different", difference: 100}
+];
+
+//this is the screen we want to loop
+var maintask_playsound = {
+    type: jsPsychAudioButtonResponse,
+    stimulus: jsPsych.timelineVariable('sound'),
+    choices: ['Same', 'Different'],
+    data: {correct_response: jsPsych.timelineVariable('correct_resp'), type: jsPsych.timelineVariable('type'), difference: jsPsych.timelineVariable('difference')},
+    prompt: "<p>Were the two sounds the <b>same</b> or <b>different</b>?</p>",
+    on_finish: function(data){
+        if(data.response == data.correct_response){
+            var gotitright = 1;
+            console.log("correct")
+        } else {
+            var gotitright = 0;
+            console.log("incorrect")
+        }
+        jsPsych.data.get().addToLast({threshold_correct: gotitright});
+    }
+};
+
+var fixation_cross = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "<p style='font-size: 100px;'>+</p>",
+    trial_duration: 500,
+    choices: "NO_KEYS"
+};
+
+var maintask_procedure = {
+    timeline: [maintask_playsound, fixation_cross],
+    timeline_variables: perceptual_task_variables,
+    randomize_order: true,
+    sample: {
+        type: 'fixed-repetitions',
+        size: 5
+    }
+};
+
+timeline.push(maintask_procedure);
+
+//3. Survey-Based Measures
+//Survey Instructions
+var instructions_04 = {
+    type: jsPsychInstructions,
+    pages: [
+    '<p>Thanks for your responses.</p>',
+    '<p>In the final part of the experiment, you will be asked some questions about your age and your general hearing background.</p>',
+    '<p>This part of the experiment is expected to last approximately 5 minutes.</p><p>Click on the Next button to begin!'
+    ],
+    show_clickable_nav: true
+};
+
+timeline.push(instructions_04);
+
+
+
+//Age
+
+var survey_age = {
+  type: jsPsychSurveyText,
+  questions: [
+    {prompt: 'How old are you (in years)?'}
+  ]
+};
+
+timeline.push(survey_age);
+
+var neq_01 = {
+  type: jsPsychSurveyLikert,
+  questions: [
+    {
+      prompt: "Outside of a paid job, how often did you use power tools, chainsaws, or other shop tools? ", 
+      labels: [
+      'Never',
+      'Every few months',
+      'Monthly',
+      'Weekly',  
+      'Daily'
+      ]
+    },
+    {
+      prompt: "<p>If you used power tools, on average, how many hours did each time/session last?</p><p><em>(please skip the question if it is not applicable)</em></p>", 
+      labels: [
+      '8 hours or more', '4 hours up to 8 hours', '1 hour up to 4 hours',  'Less than 1 hour' 
+      ]
+    },
+    {
+      prompt: "<p>If you used power tools, how often did you wear earplugs or earmuffs during this activity?</p><p><em>(please skip the question if it is not applicable)</em></p>", 
+      labels: [
+      'Never', 'Sometimes', 'Always'
+      ]
+    }
+  ]
+};
+
+timeline.push(neq_01);
+
+//conditional branching
+var skiptrials;
+
+var initial_question = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: "<p>Now think back to this past summer.</p><p>Over the summer months, did you work a noisy paid job, such as in construction, farming, a factory, lawn service, carwash, or other indoor or outdoor job working around loud equipment or machinery?</p><p>By noisy job, we mean sounds so loud that you had to shout or speak in a raised voice to be heard at arm's length.</p>",
+    choices: ['Yes', 'No'],
+    on_finish: function(data){
+        if(data.response == 1){
+            skiptrials = true;
+        } else {
+            skiptrials = false;
+        }
+    }
+}
+
+var conditional_trial = {
+    type: jsPsychSurveyText,
+    questions: [
+    {prompt: 'If yes, please describe this noisy job'}
+  ]
+};
+
+var conditional_proc = {
+    timeline: [conditional_trial],
+    conditional_function: function(){
+        if(skiptrials == true){
+            return false;
+        } else {
+            return true;
+        }
+    }
+}
+
+timeline.push(initial_question, conditional_proc);
+
+
+//Concluding Screen
+var endofexpt = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: "<p>Thank you for your responses!</p><p>The experiment is now over.</p><p>Press any key to save your data.</p>"
+};
+
+timeline.push(endofexpt);
+
+
+/*
+Wrapping up the Experiment
+
+You don't need to touch this part of the code either. Essentially, at the very end of the script, 
+you are telling jsPsych to run the timeline of different trials you have created. This is what 
+actually makes the webpage interactive!
+
+*/
+jsPsych.run(timeline);
+
+</script>
